@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notificar Incidente</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body style="background-color: #e2e2e2">
+    <div id="sideMenu" class="side-menu">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <a href="capacetes.html">Tela Inicial</a>
+      <a href="javascript:void(0)" id="gerarRelatorio" onclick="gerarRelatorio()">Gerar Relatório</a>
+      <a href="notificacao.html">Notificar Incidente</a>
+      <a href="cadastroUser.html">Cadastrar Usuário</a>
+      <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+
+    <header>
+      <a href="login.html" class="logo">SafeJob</a>
+      <nav>
+        <ul>
+          <li><a href="sobre.html" class="logo">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Notificar Incidente</h1>
+      <div class="form-container">
+        <form action="" id="incidentForm">
+          <div class="form-group">
+            <label for="date">Data do incidente:</label>
+            <input type="date" id="dataincidente" name="date" required class="styled-input" />
+          </div>
+          <div class="form-group">
+            <label for="time">Hora do incidente:</label>
+            <input type="time" id="horaincidente" name="time" required class="styled-input" />
+          </div>
+          <div class="form-group">
+            <label for="localincidente">Local do incidente:</label>
+            <select id="localincidente" name="localincidente" required class="styled-input">
+              <option value="">Selecione o local</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tipoincidente">Tipo de incidente:</label>
+            <select id="tipoincidente" name="tipoincidente" required class="styled-input">
+              <option value="">Selecione o tipo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="userName">Nome do Usuário:</label>
+            <select id="userName" name="userName" required class="styled-input">
+              <option value="">Selecione o Funcionário</option>
+              <option value="">outros</option>
+            </select>
+          </div>
+          <button id="createNotification" type="submit">Notificar incidente</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      function openMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("sideMenu").style.width = "0";
+      }
+    </script>
+    <script src="assets/js/ListNotification.js"></script>
+    <script src="assets/js/list-worker-name.js"></script>
+    <script src="assets/js/notificacao.js"></script>
+    <script src="assets/js/relatorio.js"></script>
+    <script src="assets/js/alert.js"></script>
+  </body>
+</html>

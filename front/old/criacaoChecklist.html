@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body background-color="#E2E2E2">
+
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+        <a href="login.html">Tela Inicial</a>
+        <a href="relatorio.html">Gerar Relatório</a>
+        <a href="notificacao.html">Notificar Incidente</a>
+        <a href="cadastroUser.html">Cadastrar Usuário</a>
+        <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+    
+    <header>
+        <a href="login.html" class="logo">SafeJob</a>
+        <nav>
+            <ul>
+                <li><a href="sobre.html" class="logo">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Criar Checklist</h1>
+        <div class="form-container">
+            <form action="">
+                <div class="form-group">
+                    <label for="local">Data do incidente:</label>
+                    <input type="text" id="local" name="local" required class="styled-input">
+                </div>
+                
+                <button onclick="location.href='checklist.html'">Criar Checklist</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        function openMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartões de Capacetes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <body background-color="#E2E2E2">
+    <div id="sideMenu" class="side-menu">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <a href="capacetes.html">Tela Inicial</a>
+      <button type="click" id="gerarRelatorio">Gerar Relatório</button>
+      <a href="notificacao.html">Notificar Incidente</a>
+      <a href="cadastroUser.html">Cadastrar Usuário</a>
+      <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+
+    <header>
+      <a href="login.html" class="logo">SafeJob</a>
+      <nav>
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Capacetes Cadastrados</h1>
+      <div class="card-container">
+        <div class="card">
+          <img src="assets/img/capacete.png" alt="Imagem Capacete" class="helmet-image" />
+          <div class="card-info">
+            <h2>ID: 1</h2>
+            <p><strong>Usuário: </strong>Pamela</p>
+            <p><strong>Status: </strong>Ativo</p>
+            <p><strong>Setor: </strong>Engenharia</p>
+            <p><strong>Ativo: </strong>Sim</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/capacete.png" alt="Imagem Capacete" class="helmet-image" />
+          <div class="card-info">
+            <h2>ID: 2</h2>
+            <p><strong>Usuário: </strong></p>
+            <p><strong>Status: </strong></p>
+            <p><strong>Setor: </strong></p>
+            <p><strong>Ativo: </strong></p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/capacete.png"" alt="Imagem Capacete" class="helmet-image">
+          <div class="card-info">
+            <h2>ID: 3</h2>
+            <p><strong>Usuário: </strong></p>
+            <p><strong>Status: </strong></p>
+            <p><strong>Setor: </strong></p>
+            <p><strong>Ativo: </strong></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function openMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("sideMenu").style.width = "0";
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .helmet-image {
+        width: 100px;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .card-info {
+        flex: 1;
+      }
+
+      .card-info h2 {
+        margin: 0 0 10px;
+      }
+
+      .card-info p {
+        margin: 5px 0;
+        color: #333;
+      }
+    </style>
+    <script src="assets/js/relatorio.js"></script>
+  </body>
+</html>

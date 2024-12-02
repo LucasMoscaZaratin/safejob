@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Novo Usuário</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <body background-color="#E2E2E2">
+    <div id="sideMenu" class="side-menu">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <a href="capacetes.html">Tela Inicial</a>
+      <a href="javascript:void(0)" id="gerarRelatorio" onclick="gerarRelatorio()">Gerar Relatório</a>
+      <a href="notificacao.html">Notificar Incidente</a>
+      <a href="cadastroUser.html">Cadastrar Usuário</a>
+      <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+
+    <header>
+      <a href="login.html" class="logo">SafeJob</a>
+      <nav>
+        <ul>
+          <li><a href="sobre.html" class="logo">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Criar novo usuário</h1>
+      <div class="form-container">
+        <form id="createUserForm" action="">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div class="form-group">
+            <label for="cargo">Cargo:</label>
+            <input type="text" id="cargo" name="cargo" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone-emergencia ">Telefone de Emergencia:</label>
+            <input type="text" id="telefone-emergencia" name="telefone-emergencia" required />
+          </div>
+          <div class="form-group">
+            <label for="tipo-sanguineo">Tipo Sanguineo:</label>
+            <input type="text" id="tipo-sanguineo" name="tipo-sanguineo" required />
+          </div>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      function openMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("sideMenu").style.width = "0";
+      }
+    </script>
+    <script src="assets/js/relatorio.js"></script>
+    <script src="assets/js/cadastro.js"></script>
+    <script src="assets/js/alert.js"></script>
+  </body>
+</html>

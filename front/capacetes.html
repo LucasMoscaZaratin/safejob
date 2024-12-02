@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Capacetes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e2e2e2;
+      }
+
+      .table-container {
+        margin: 50px auto;
+        width: 90%;
+        max-width: 1000px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table th,
+      table td {
+        padding: 12px 15px;
+        text-align: center;
+        border: 1px solid #ddd;
+      }
+
+      table th {
+        background-color: #00426f;
+        color: white;
+      }
+
+      table td {
+        background-color: #f9f9f9;
+      }
+
+      table tr:nth-child(even) td {
+        background-color: #f2f2f2;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 20px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #00426f;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="login.html" class="logo">SafeJob</a>
+      <nav>
+        <ul>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="sideMenu" class="side-menu">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <a href="login.html">Tela Inicial</a>
+      <a href="javascript:void(0)" id="gerarRelatorio" onclick="gerarRelatorio()">Gerar Relatório</a>
+      <a href="notificacao.html">Notificar Incidente</a>
+      <a href="cadastroUser.html">Cadastrar Usuário</a>
+      <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+
+    <main>
+      <h1>Capacetes</h1>
+      <div class="form-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Usuário</th>
+              <th>Status</th>
+              <th>Setor</th>
+              <th>Ativo</th>
+            </tr>
+          </thead>
+          <tbody id="helmetTableBody" class="text-black">
+            <!-- As linhas da tabela serão inseridas aqui via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      function openMenu() {
+        document.getElementById("sideMenu").style.width = "250px";
+      }
+
+      function closeMenu() {
+        document.getElementById("sideMenu").style.width = "0";
+      }
+    </script>
+    <script src="assets/js/relatorio.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          // Fazendo a requisição GET à API para obter os dados dos capacetes
+          const response = await fetch("http://localhost:3333/helmet/getHelmet", {
+            method: "GET",
+          });
+
+          if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log("Dados recebidos da API:", data);
+
+          const tableBody = document.getElementById("helmetTableBody");
+          tableBody.innerHTML = "";
+
+          data.forEach((helmet) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                        <td>${helmet.id}</td>
+                        <td>${helmet.user_name}</td>
+                        <td>${helmet.status}</td>
+                        <td>${helmet.setor}</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" ${helmet.is_active ? "checked" : ""} />
+                                <span class="slider"></span>
+                            </label>
+                        </td>
+                    `;
+            tableBody.appendChild(row);
+          });
+        } catch (error) {
+          console.error("Erro ao buscar os dados dos capacetes:", error);
+        }
+      });
+    </script>
+    <script src="assets/js/alert.js"></script>
+  </body>
+</html>

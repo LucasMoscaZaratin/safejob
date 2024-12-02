@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #1A1D30; background-image: url('assets/imgs_jpg/icon.png'); background-repeat: no-repeat; background-position: center top;">
+  
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+        <a href="login.html">Tela Inicial</a>
+        <a href="criacaoChecklist.html">Gerar Relatório</a>
+        <a href="notificacao.html">Notificar Incidente</a>
+        <a href="cadastroUser.html">Cadastrar Usuário</a>
+        <a href="cadastroCapacete.html">Cadastrar Capacete</a>
+    </div>
+
+    <span class="openbtn" onclick="openMenu()">&#9776; SafeJob</span>
+
+    <header>
+        <a href="login.html" class="logo">SafeJob</a>
+        <nav>
+            <ul>
+                <li><a href="sobre.html" class="logo">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 style="color: #ffffff; font-size: 36px;">Sobre</h1>
+        <div class="form-container" style="width: 80%; max-width: 800px; margin: auto;">
+            <form action="">
+                <p style="color: #ffffff; font-size: 22px;">
+                    A ideia para esse projeto surgiu após uma aula que nós alunos tivemos a respeito de ergonomia e segurança do trabalho, após uma excelente apresentação do curso, ficamos interessados com o tema e conversamos com a professora sobre algo que poderíamos fazer para contribuir com essa área. Foi então que após uma conversa entre os membros do grupo, surgiu a ideia de fazer um site que contribua com o dia a dia do trabalhador e o responsável pela segurança do trabalho em uma empresa. Além de também divulgar um pouco a respeito das normas reguladoras responsáveis por essa área, essas que são pouco conhecidas, mas podem ajudar tanto o trabalhador (caso algo aconteça a ele) quanto para a empresa (para se prevenir contra possíveis multas).
+                </p>
+            </form>
+        </div>
+    </main>
+    <script>
+        function openMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+    </script>
+</body>
+</html>
