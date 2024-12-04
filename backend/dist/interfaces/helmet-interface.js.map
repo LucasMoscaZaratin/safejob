@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "helmet-interface.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../src/interfaces/helmet-interface.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}

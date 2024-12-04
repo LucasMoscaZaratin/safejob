@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "login-interface.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../src/interfaces/login-interface.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}

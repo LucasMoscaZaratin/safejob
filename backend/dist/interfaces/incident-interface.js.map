@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "incident-interface.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../src/interfaces/incident-interface.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}

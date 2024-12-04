@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "table-interface.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../src/interfaces/table-interface.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}
