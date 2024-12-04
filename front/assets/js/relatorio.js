@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const gerarRelatorioButton = document.getElementById("gerarRelatorio");
   gerarRelatorioButton.addEventListener("click", async () => {
     try {
-      const response = await fetch("http://localhost:3333/report/generateReport", {
+      const response = await fetch("http://localhost:3000/report/generateReport", {
         method: "GET",
       });
 

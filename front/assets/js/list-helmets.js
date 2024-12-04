@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     // Fazendo a requisição GET à API para obter os dados dos capacetes
-    const response = await fetch("http://localhost:3333/helmet/getHelmet", {
+    const response = await fetch("http://localhost:3000/helmet/getHelmet", {
       method: "GET",
     });
 
@@ -20,19 +20,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       const row = document.createElement("tr");
 
       row.innerHTML = `
-          <td>${helmet.id}</td>
-          <td>${helmet.user_name}</td>
-          <td>${helmet.status}</td>
-          <td>${helmet.setor}</td>
-          <td>
-            <label class="switch">
-              <input type="checkbox" ${helmet.is_active ? "checked" : ""} />
-              <span class="slider"></span>
-            </label>
-          </td>
-        `;
-
-      // Adicionando a linha à tabela
+                  <td>${helmet.id}</td>
+                  <td>${helmet.user_name}</td>
+                  <td>${helmet.status}</td>
+                  <td>${helmet.setor}</td>
+                  <td>
+                      <label class="switch">
+                          <input type="checkbox" ${helmet.is_active ? "checked" : ""} />
+                          <span class="slider"></span>
+                      </label>
+                  </td>
+              `;
       tableBody.appendChild(row);
     });
   } catch (error) {

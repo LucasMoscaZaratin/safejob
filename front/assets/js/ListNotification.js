@@ -1,7 +1,7 @@
 async function LoadIncidentData() {
   try {
     // Chamada para a API
-    const response = await fetch("http://localhost:3333/list/listLocation", {
+    const response = await fetch("http://localhost:3000/list/listLocation", {
       method: "GET",
     });
 

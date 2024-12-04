@@ -1,58 +1,80 @@
 (() => {
-  const socket = new WebSocket("ws://localhost:3000/getHelmet");
+  const socketUrl = "ws://localhost:3000/impact/getImpact";
+  const originalTitle = document.title;
 
-  // Verifica se o navegador suporta notificações
-  if ("Notification" in window) {
-    Notification.requestPermission().then((permission) => {
-      if (permission !== "granted") {
-        console.warn("Notifications are disabled or denied.");
-      }
-    });
-  } else {
-    console.warn("Notifications are not supported by this browser.");
-  }
+  const setupWebSocket = () => {
+    const socket = new WebSocket(socketUrl);
 
-  socket.onopen = () => {
-    console.log("WebSocket connection established.");
-  };
-
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-
-    if (data.success) {
-      const alerts = data.data.filter((entry) => entry.alert);
-
-      if (alerts.length > 0) {
-        const alertMessages = alerts
-          .map((alert) => `ALERT! High value detected at ${alert.timestamp}: x=${alert.x}, y=${alert.y}, z=${alert.z}`)
-          .join("\n");
-
-        // Exibe notificação, se permitido
+    const showNotification = (title, body) => {
+      if ("Notification" in window) {
         if (Notification.permission === "granted") {
-          // biome-ignore lint/complexity/noForEach: <explanation>
-          alerts.forEach((alert) => {
-            new Notification("Helmet Alert", {
-              body: `High value detected at ${alert.timestamp}: x=${alert.x}, y=${alert.y}, z=${alert.z}`,
-            });
+          new Notification(title, { body });
+        } else if (Notification.permission === "default") {
+          Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+              new Notification(title, { body });
+            }
           });
         }
-
-        // Adiciona destaque ao título da página
-        document.title = "🚨 ALERT! High Value Detected!";
-        setTimeout(() => {
-          document.title = document.title.replace("🚨 ALERT! High Value Detected!", ""); // Restaura o título original
-        }, 5000);
+      } else {
+        console.warn("Notificações não são suportadas pelo navegador.");
       }
-    } else {
-      console.error("Error:", data.message);
-    }
+    };
+
+    // Eventos WebSocket
+    socket.onopen = () => {
+      console.log("Conexão WebSocket estabelecida.");
+    };
+
+    socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+
+        if (data.success) {
+          const alerts = data.data.filter((entry) => entry.alert);
+
+          if (alerts.length > 0) {
+            const alertMessages = alerts
+              .map((alert) => `At ${alert.timestamp}: x=${alert.x}, y=${alert.y}, z=${alert.z}`)
+              .join("\n");
+
+            showNotification("Helmet Alerts", alertMessages);
+
+            document.title = "🚨 ALERT! High Value Detected!";
+            setTimeout(() => {
+              document.title = originalTitle;
+            }, 5000);
+          }
+        } else {
+          console.error("Erro recebido do servidor:", data.message);
+        }
+      } catch (error) {
+        console.error("Erro ao processar mensagem do servidor:", error);
+      }
+    };
+
+    socket.onclose = (event) => {
+      console.log(`Conexão WebSocket fechada. Código: ${event.code}, Motivo: ${event.reason}`);
+      reconnect();
+    };
+
+    socket.onerror = (event) => {
+      console.error("Erro no WebSocket:", event);
+    };
+
+    return socket;
   };
 
-  socket.onclose = () => {
-    console.log("WebSocket connection closed.");
+  const reconnect = () => {
+    console.log("Tentando reconectar ao WebSocket...");
+    setTimeout(() => setupWebSocket(), 5000);
   };
 
-  socket.onerror = (error) => {
-    console.error("WebSocket error:", error);
-  };
+  if ("Notification" in window && Notification.permission === "default") {
+    Notification.requestPermission().catch((err) =>
+      console.error("Erro ao solicitar permissão para notificações:", err)
+    );
+  }
+
+  setupWebSocket();
 })();

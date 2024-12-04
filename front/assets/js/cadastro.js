@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tipo_sanguineo = document.getElementById("tipo-sanguineo").value;
 
     try {
-      const response = await fetch("http://localhost:3333/worker/createWorker", {
+      const response = await fetch("http://localhost:3000/worker/createWorker", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

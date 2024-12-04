@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const setor = document.getElementById("setor").value;
 
     try {
-      const response = await fetch("http://localhost:3333/helmet/createHelmet", {
+      const response = await fetch("http://localhost:3000/helmet/createHelmet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

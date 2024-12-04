@@ -34,15 +34,15 @@ const helmetRoute = async (app: FastifyInstance) => {
   });
 
   app.post<{ Body: Helmet }>("/createHelmet", async (request, reply) => {
-    const { user_name, setor } = request.body;
+    const { user_name, setor, mac_address } = request.body; // Incluindo mac_address
 
     try {
       const text = `
-        INSERT INTO helmet (user_name, setor)
-        VALUES ($1, $2)
+        INSERT INTO helmet (user_name, setor, mac_address)  -- Adicionando mac_address à tabela
+        VALUES ($1, $2, $3)
         RETURNING *
       `;
-      const values = [user_name, setor];
+      const values = [user_name, setor, mac_address]; // Incluindo mac_address nos valores
       const result = await query(text, values);
       reply.code(201).send({ message: "Usuario criado com sucesso", user: result.rows[0] });
     } catch (err) {

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const user_name = document.getElementById("userName").value;
 
     try {
-      const response = await fetch("http://localhost:3333/notification/createNotification", {
+      const response = await fetch("http://localhost:3000/notification/createNotification", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 async function loadSetorNames() {
   try {
     // Chamada para a API
-    const response = await fetch("http://localhost:3333/helmet/getSetor", {
+    const response = await fetch("http://localhost:3000/helmet/getSetor", {
       method: "GET",
     });
 

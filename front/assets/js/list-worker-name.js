@@ -1,7 +1,7 @@
 async function loadWorkerName() {
   try {
     // Chamada para a API
-    const response = await fetch("http://localhost:3333/worker/getAllNameWorkers", {
+    const response = await fetch("http://localhost:3000/worker/getAllNameWorkers", {
       method: "GET",
     });
 
